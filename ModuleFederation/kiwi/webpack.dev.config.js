@@ -1,6 +1,7 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
   entry: "./src/kiwi.js",
@@ -12,16 +13,9 @@ module.exports = {
   },
   mode: "development",
   devServer: {
-    contentBase: path.resolve(__dirname, "./dist"),
-    index: "index.html",
+    static: path.resolve(__dirname, "./dist"),
+    // index: "index.html",
     port: 9002,
-    static: {
-      directory: path.resolve(__dirname, "./dist"),
-    },
-    devMiddleware: {
-      index: "kiwi.html",
-      wirteToDisk: true,
-    },
   },
   module: {
     rules: [
@@ -57,6 +51,12 @@ module.exports = {
       title: "Kiwi",
       description: "Kiwi",
       template: "src/page-template.hbs",
+    }),
+    new ModuleFederationPlugin({
+      name: "KiwiApp",
+      remotes: {
+        HelloWorldApp: "HelloWorldApp@http://localhost:9001/remoteEntry.js",
+      },
     }),
   ],
 };
