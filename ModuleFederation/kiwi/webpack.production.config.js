@@ -62,7 +62,7 @@ module.exports = {
       name: "KiwiApp",
       filename: "remoteEntry.js",
       exposes: {
-        "./KiwiPage": "./src/components/KiwiPage",
+        "./KiwiPage": "./src/components/kiwi-page.js",
       },
     }),
   ],

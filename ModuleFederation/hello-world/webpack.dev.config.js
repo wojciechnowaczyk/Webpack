@@ -15,7 +15,9 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, "./dist"),
     },
-    // index: "hello-world.html",
+    historyApiFallback: {
+      index: "/hello-world.html",
+    },
     port: 9001,
   },
   module: {
@@ -55,7 +57,8 @@ module.exports = {
       exposes: {
         "./HelloWorldButton":
           "./src/components/hello-world-button/hello-world-button.js",
-        "./HelloWorldPage": "./src/component/hello-world-page.js",
+        "./HelloWorldPage":
+          "./src/components/hello-world-page/hello-world-page.js",
       },
     }),
   ],

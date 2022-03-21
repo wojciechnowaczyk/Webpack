@@ -1,5 +1,5 @@
 import HelloWorldButton from "../hello-world-button/hello-world-button.js";
-import Heading from "./heading/heading.js";
+import Heading from "../heading/heading.js";
 
 class HelloWorldPage {
   render() {
